@@ -1,5 +1,14 @@
 # 更新日志
 
+## [v1.0.3] - 2025-10-21
+
+### 新增
+- 添加免费服务器部署支持
+- 创建Web界面用于云平台部署
+- 添加FREE_DEPLOYMENT.md部署指南
+- 添加Procfile和render.yaml配置文件
+- 添加Dockerfile.web支持Web界面
+
 ## [v1.0.2] - 2025-10-21
 
 ### 新增

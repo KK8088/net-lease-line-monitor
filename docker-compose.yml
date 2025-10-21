@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  network-monitor:
+    build: .
+    container_name: network-monitor
+    restart: unless-stopped
+    volumes:
+      - ./data:/app/data
+      - ./logs:/var/log/network-monitor
+    environment:
+      - PYTHONUNBUFFERED=1
+    # 如果需要Web界面，可以取消注释以下行
+    # ports:
+    #   - "8000:8000"

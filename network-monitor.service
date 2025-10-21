@@ -1,0 +1,14 @@
+[Unit]
+Description=Network Connectivity Monitor for Unicom Line
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/network-monitor
+ExecStart=/usr/bin/python3 /opt/network-monitor/network_monitor.py
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

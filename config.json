@@ -1,0 +1,29 @@
+{
+    "targets": ["8.8.8.8", "114.114.114.114", "www.baidu.com", "www.cucloud.cn"],
+    "check_interval": 30,
+    "alert_cooldown": 300,
+    "timeout": 5,
+    "packet_count": 4,
+    "statistics_window": 3600,
+    "alert_threshold": 0.5,
+    "email": {
+        "enabled": true,
+        "smtp_server": "smtp.mxhichina.com",
+        "smtp_port": 587,
+        "username": "admin@yourcompany.com",
+        "password": "your_email_password",
+        "to_emails": ["it-admin@yourcompany.com", "manager@yourcompany.com"]
+    },
+    "webhook": {
+        "enabled": true,
+        "url": "https://oapi.dingtalk.com/robot/send?access_token=your_dingtalk_token"
+    },
+    "sms": {
+        "enabled": false,
+        "api_url": "https://sms.example.com/send"
+    },
+    "database": {
+        "enabled": true,
+        "retention_days": 30
+    }
+}

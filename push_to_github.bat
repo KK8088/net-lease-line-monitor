@@ -3,7 +3,7 @@ echo 推送项目到GitHub
 echo ==================
 
 REM 请将下面的GitHub用户名替换为您自己的用户名
-set GITHUB_USERNAME=your-github-username
+set GITHUB_USERNAME=Kzar
 set REPO_NAME=net-lease-line-monitor
 
 echo 请确保您已经在GitHub上创建了名为 %REPO_NAME% 的仓库

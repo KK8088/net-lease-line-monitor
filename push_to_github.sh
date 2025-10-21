@@ -4,7 +4,7 @@ echo "推送项目到GitHub"
 echo "=================="
 
 # 请将下面的GitHub用户名替换为您自己的用户名
-GITHUB_USERNAME="your-github-username"
+GITHUB_USERNAME="Kzar"
 REPO_NAME="net-lease-line-monitor"
 
 echo "请确保您已经在GitHub上创建了名为 $REPO_NAME 的仓库"

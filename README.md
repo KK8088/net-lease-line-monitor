@@ -259,6 +259,19 @@ python advanced_network_monitor.py --db /path/to/database.db
 - `ALIBABA_CLOUD_SSH_KEY`: 阿里云服务器SSH私钥
 - `WEBHOOK_URL`: 部署完成通知Webhook URL
 
+## 免费服务器部署
+
+项目支持部署到多种免费的云服务平台：
+
+- **Render**: 简单易用的部署平台
+- **Railway**: 现代化的部署平台
+- **Fly.io**: 容器化部署平台
+- **Heroku**: 经典的PaaS平台
+- **Google Cloud Run**: Google的容器化服务
+- **GitHub Codespaces**: GitHub的云端开发环境
+
+详细部署指南请查看 [FREE_DEPLOYMENT.md](FREE_DEPLOYMENT.md) 文件。
+
 ## 许可证
 
 本项目采用MIT许可证 - 查看 [LICENSE](LICENSE) 文件了解详情

@@ -239,6 +239,25 @@ python advanced_network_monitor.py --db /path/to/database.db
 4. 推送到分支 (`git push origin feature/AmazingFeature`)
 5. 开启一个Pull Request
 
+## 持续集成/持续部署 (CI/CD)
+
+本项目使用GitHub Actions进行持续集成和持续部署：
+
+- **测试**: 自动运行代码语法检查和单元测试
+- **构建**: 自动构建Docker镜像
+- **发布**: 自动创建GitHub Release
+
+工作流文件位于 [.github/workflows/deploy.yml](.github/workflows/deploy.yml)。
+
+要启用完整的CI/CD功能，您需要在GitHub仓库设置中配置以下Secrets：
+
+- `DOCKERHUB_USERNAME`: Docker Hub用户名
+- `DOCKERHUB_TOKEN`: Docker Hub访问令牌
+- `ALIBABA_CLOUD_HOST`: 阿里云服务器IP地址
+- `ALIBABA_CLOUD_USERNAME`: 阿里云服务器用户名
+- `ALIBABA_CLOUD_SSH_KEY`: 阿里云服务器SSH私钥
+- `WEBHOOK_URL`: 部署完成通知Webhook URL
+
 ## 许可证
 
 本项目采用MIT许可证 - 查看 [LICENSE](LICENSE) 文件了解详情

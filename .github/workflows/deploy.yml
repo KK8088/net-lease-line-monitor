@@ -1,0 +1,83 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  # 代码检查和测试
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.9
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+    
+    - name: Run syntax check
+      run: |
+        python -m py_compile network_monitor.py
+        python -m py_compile advanced_network_monitor.py
+    
+    - name: Run unit tests
+      run: |
+        python test_monitor.py
+
+  # 构建Docker镜像
+  build-docker:
+    needs: test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Build Docker image
+      run: |
+        docker build . --file Dockerfile --tag network-monitor:latest
+    
+    - name: Test Docker image
+      run: |
+        docker run --rm network-monitor:latest python health_check.py
+
+  # 发布Release
+  release:
+    needs: build-docker
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Get version
+      run: |
+        echo "VERSION=$(date +'%Y%m%d')-$(git rev-parse --short HEAD)" >> $GITHUB_ENV
+    
+    - name: Create Release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: v${{ env.VERSION }}
+        release_name: Release v${{ env.VERSION }}
+        body: |
+          ## Network Monitor Release v${{ env.VERSION }}
+          
+          自动发布的版本，包含最新的网络监控功能。
+          
+          ### 功能特性
+          - 多目标网络监控
+          - 邮件/Webhook/SMS报警
+          - 数据库存储和统计分析
+          - Docker容器化部署
+        draft: false
+        prerelease: false

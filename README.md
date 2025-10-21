@@ -52,7 +52,7 @@
 
 1. 克隆或下载本仓库
 ```bash
-git clone https://github.com/your-username/net-lease-line-monitor.git
+git clone https://github.com/KK8088/net-lease-line-monitor.git
 cd net-lease-line-monitor
 ```
 
@@ -245,9 +245,9 @@ python advanced_network_monitor.py --db /path/to/database.db
 
 ## 联系方式
 
-项目维护者： [Kzar](https://github.com/Kzar)
+项目维护者： [Zk0x0](https://github.com/Zk0x0)
 
-项目链接：[https://github.com/Kzar/net-lease-line-monitor](https://github.com/Kzar/net-lease-line-monitor)
+项目链接：[https://github.com/KK8088/net-lease-line-monitor](https://github.com/KK8088/net-lease-line-monitor)
 
 ## 更新日志
 

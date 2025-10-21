@@ -1,5 +1,12 @@
 # 更新日志
 
+## [v1.0.2] - 2025-10-21
+
+### 新增
+- 添加GitHub Actions工作流用于CI/CD
+- 在README中添加GitHub Actions badge
+- 在README中添加CI/CD文档
+
 ## [v1.0.1] - 2025-10-21
 
 ### 修复

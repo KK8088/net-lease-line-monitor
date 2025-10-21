@@ -2,6 +2,81 @@
 
 本指南将介绍如何将联通100M专线网络监控系统部署到各种免费的云服务平台上。
 
+## 使用Docker Compose部署（推荐）
+
+对于Ubuntu服务器，推荐使用Docker Compose方式进行部署，这种方式简单且易于管理。
+
+### 部署步骤
+
+1. 安装Docker和Docker Compose：
+```bash
+# 更新系统包
+sudo apt update
+
+# 安装Docker
+sudo apt install docker.io -y
+
+# 启动Docker服务
+sudo systemctl start docker
+sudo systemctl enable docker
+
+# 安装Docker Compose
+sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+```
+
+2. 克隆项目代码：
+```bash
+git clone https://github.com/KK8088/net-lease-line-monitor.git
+cd net-lease-line-monitor
+```
+
+3. 配置监控参数：
+```bash
+# 复制配置文件示例
+cp config.json config.production.json
+
+# 编辑配置文件
+nano config.production.json
+```
+
+4. 创建环境变量文件：
+```bash
+cp .env.example .env
+nano .env
+```
+
+5. 启动服务：
+```bash
+# 使用生产环境配置启动服务
+docker-compose -f docker-compose.production.yml up -d
+
+# 查看服务状态
+docker-compose -f docker-compose.production.yml ps
+```
+
+6. 查看日志：
+```bash
+# 实时查看日志
+docker-compose -f docker-compose.production.yml logs -f
+```
+
+### 管理命令
+
+```bash
+# 停止服务
+docker-compose -f docker-compose.production.yml down
+
+# 重启服务
+docker-compose -f docker-compose.production.yml restart
+
+# 更新配置后重启
+docker-compose -f docker-compose.production.yml restart network-monitor
+
+# 查看资源使用情况
+docker stats
+```
+
 ## 支持的免费平台
 
 1. [Render](https://render.com/) - 提供免费的Web服务和后台服务

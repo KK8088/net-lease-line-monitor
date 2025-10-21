@@ -173,6 +173,37 @@ docker-compose ps
 docker-compose logs -f
 ```
 
+### Docker Compose生产环境部署
+
+对于生产环境部署，建议使用专门的生产环境配置：
+
+```bash
+# 使用生产环境配置构建并启动容器
+docker-compose -f docker-compose.production.yml up -d
+
+# 查看容器状态
+docker-compose -f docker-compose.production.yml ps
+
+# 查看日志
+docker-compose -f docker-compose.production.yml logs -f
+```
+
+### 配置文件挂载
+
+为了便于配置管理，建议将config.json文件挂载到容器中：
+
+```bash
+# 创建自定义配置文件
+cp config.json config.production.json
+
+# 编辑配置文件以适应生产环境
+nano config.production.json
+
+# 在docker-compose.yml中挂载配置文件
+# volumes:
+#   - ./config.production.json:/app/config.json:ro
+```
+
 ## 使用建议
 
 1. **监控目标选择**：
